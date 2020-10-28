@@ -1,0 +1,58 @@
+<div class="vibration-contianer">
+    <div class="toolbox">
+        <app-studyobject-toolbox [toolbox]="this.toolbox" [playgroundCount]="sectionelements.length">
+        </app-studyobject-toolbox>
+    </div>
+
+    <div class="mainContent">
+        <a mat-fab class="greenButton" (click)="onAddPlayground()" style="display: block; margin: auto;">
+            <mat-icon>add</mat-icon>
+        </a><br>
+        <div *ngFor="let sectionelement of sectionelements; let index = index">
+            <mat-card>
+                <mat-card-title>
+                    <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
+                        <input matInput placeholder="Bezeichnung" [(ngModel)]="sectionelement.name" /> </mat-form-field>
+                    &nbsp;&nbsp;
+                    <mat-form-field style="width: 20%; font-size:18px">
+                        <mat-label>Randomisierung</mat-label>
+                        <mat-select [(value)]="sectionelement.randomStrategy">
+                            <mat-option *ngFor="let randomizer of randomizers; let index = index" [value]="index">
+                                {{ this.studywrapper.getRandomizerName(index) }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field><button mat-icon-button class="redButton" (click)="deleteTest(index, sectionelement.id)">
+                        <mat-icon class="trashCan">delete</mat-icon>
+                    </button>
+                </mat-card-title>
+                Für das Ergebnis relevant? &nbsp;&nbsp; Nein &nbsp;
+                <mat-slide-toggle [(ngModel)]="sectionelement.resultRelevant"></mat-slide-toggle>
+                &nbsp;&nbsp;&nbsp;Ja<br>
+                <hr>
+                <div cdkDropList class="studyObjectList" id="studyObjectList{{ index }}"
+                    [cdkDropListData]="sectionelement.studyObjects"
+                    (cdkDropListDropped)="onDrop($event, sectionelement)">
+                    <div *ngFor="let ref of sectionelement.studyObjects; let index = index">
+                        <mat-card cdkDrag
+                            [style.background-color]="this.colorService.getStudyObjectColor(findStudyObjectById(ref.ID))"
+                            style="font-size:18px; cursor: move;">{{(index+1) + ". " + 
+              this.studywrapper.referenceTupleMembershipVerifier.getObject(ref).name
+              }}&nbsp;&nbsp;&nbsp;&nbsp;<mat-slide-toggle [(ngModel)]="ref.isFixed">Fixiert</mat-slide-toggle><button
+                                mat-icon-button class="grayButton"
+                                (click)="removeFromArray(sectionelement.studyObjects, index)">
+                                <mat-icon class="trashCan">delete</mat-icon>
+                            </button>
+                        </mat-card>
+                        <div *ngIf="index+1 != sectionelement.studyObjects.length">
+                            <br />
+                        </div>
+                    </div>
+                    <div class="droplistSubtitle">Hier Elemente aus dem Wergzeugkasten einfügen, um eine Abfolge
+                        festzulegen.</div>
+                </div>
+            </mat-card>
+            <br>
+        </div>
+    </div>
+
+</div>

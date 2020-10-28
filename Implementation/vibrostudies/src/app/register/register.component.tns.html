@@ -1,0 +1,37 @@
+<StackLayout hideActionBar backgroundColor="#424242">
+    <Label  class="registrationLabel"
+            text="Kostenlos registrieren"
+            textWrap="true">
+    </Label>
+    <Label  class="subRegistrationLabel"
+            text="Erstelle jetzt deine eigenen Studien"
+            textWrap="true">
+    </Label>
+    <TextField  class="textFieldStyle"
+                hint="Vorname"
+                [(ngModel)]="firstName">
+    </TextField>
+    <TextField  class="textFieldStyle"
+                hint="Nachname"
+                [(ngModel)]="lastName">
+    </TextField>
+    <TextField  class="textFieldStyle"
+                hint="E-Mail-Adresse"
+                keyboardType="email"
+                [(ngModel)]="email">
+    </TextField>
+    <TextField  class="textFieldStyle"
+                hint="Passwort"
+                secure="true"
+                [(ngModel)]="password">
+    </TextField>
+    <TextField  class="textFieldStyle"
+                hint="Passwort bestätigen"
+                secure="true"
+                [(ngModel)]="confirmPassword">
+    </TextField>
+    <Button text="Registrieren" 
+            class="registerButton"
+            (tap)="register()">
+    </Button>
+</StackLayout>

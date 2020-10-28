@@ -1,0 +1,82 @@
+<ScrollView>
+    <StackLayout backgroundColor="#424242">
+        <Label class="title" text="Mein Profil" textWrap="false"></Label>
+
+
+
+        <Label class="section-title" text="Accountdaten" textWrap="false">
+        </Label>
+        <StackLayout class="container">
+
+            <TextField class="textFieldStyle" hint="Vorname" (textChange)="onChangeAccountInfo($event, 1)"
+                [(ngModel)]="user.firstName"></TextField>
+
+            <TextField class="textFieldStyle" hint="Nachname" (textChange)="onChangeAccountInfo($event, 2)"
+                [(ngModel)]="user.lastName"></TextField>
+
+            <TextField class="textFieldStyle" hint="E-Mail" keyboardType="email" (textChange)="onChangeAccountInfo($event, 3)"
+                [(ngModel)]="user.email.email" [style.border-bottom-color]="txtFieldEMail.colour"></TextField>
+            <div *ngIf="txtFieldEMail.error; then messageEMail"></div>
+            <ng-template #messageEMail>
+                <Label class="errorMessage" text="Bitte gib eine gültige E-Mail-Adresse an!" textWrap="true"></Label>
+            </ng-template>
+
+            <TextField class="textFieldStyle" hint="Passwort eingeben" (textChange)="onChangeAccountInfo($event, 4)"
+            [(ngModel)]="txtFieldPassword.value" [style.border-bottom-color]="txtFieldPassword.colour" secure="true"></TextField>
+            <div *ngIf="txtFieldPassword.error; then messagePassword"></div>
+            <ng-template #messagePassword>
+                <Label class="errorMessage" text="Falsches Passwort" textWrap="true"></Label>
+            </ng-template>  
+
+            <Button text="Änderungen speichern" (tap)="saveUser()" [isEnabled]="isButtonEnabledAccountInfo"></Button>
+        </StackLayout>
+
+
+
+        <Label class="section-title" text="Passwort ändern" textWrap="false">
+        </Label>
+        <StackLayout class="container">
+
+            <TextField class="textFieldStyle" [style.border-bottom-color]="txtFieldOldPassword.colour" hint="Altes Passwort eingeben"
+                secure="true" (textChange)="onChangePassword($event, 1)" [(ngModel)]="txtFieldOldPassword.value">
+            </TextField>
+            <div *ngIf="txtFieldOldPassword.error; then messageOldPW"></div>
+            <ng-template #messageOldPW>
+                <Label class="errorMessage" text="Falsches Passwort" textWrap="true"></Label>
+            </ng-template>
+
+            <TextField class="textFieldStyle" [style.border-bottom-color]="txtFieldNewPassword.colour" hint="Neues Passwort eingeben"
+                secure="true" (textChange)="onChangePassword($event, 2)" [(ngModel)]="txtFieldNewPassword.value">
+            </TextField>
+            <div *ngIf="txtFieldNewPassword.error; then messageNewPW"></div>
+            <ng-template #messageNewPW>
+                <Label class="errorMessage"
+                    text="Dein neues Passwort muss mind. 6 Zeichen lang sein und 1 Groß-, 1 Kleinbuchstabe und 1 Zahl enthalten"
+                    textWrap="true"></Label>
+            </ng-template>
+
+            <TextField class="textFieldStyle" [style.border-bottom-color]="txtFieldNewPasswordRepeat.colour"
+                hint="Neues Passwort erneut eingeben" secure="true" (textChange)="onChangePassword($event, 3)" [(ngModel)]="txtFieldNewPasswordRepeat.value">
+            </TextField>
+            <div *ngIf="txtFieldNewPasswordRepeat.error; then messageNewPW2"></div>
+            <ng-template #messageNewPW2>
+                <Label class="errorMessage" text="Das neue Passwort stimmt nicht überein" textWrap="true"></Label>
+            </ng-template>
+
+            <Button text="Passwort ändern" (tap)="savePassword()" [isEnabled]="isButtonEnabledChangePassword">
+            </Button>
+        </StackLayout>
+
+
+        
+        <Label class="section-title" text="Account löschen" textWrap="false">
+        </Label>
+        <StackLayout class="container">
+            <Button text="Account löschen" class="deleteProfileButton" (tap)="deleteUser()">
+            </Button>
+        </StackLayout>
+
+
+
+    </StackLayout>
+</ScrollView>

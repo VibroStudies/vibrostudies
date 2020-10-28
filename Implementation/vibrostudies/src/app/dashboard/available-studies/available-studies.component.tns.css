@@ -1,0 +1,45 @@
+* {
+    color: white;
+}
+
+.listItem {
+    border-bottom-color: #212121; 
+    border-bottom-width: 2;
+}
+
+.readMoreButton {
+    background: #3e753b;
+    font-size: 16;
+    border-radius: 8;
+    height: 40;
+}
+
+.readMoreButton:active {
+    background: #325e2f;
+    font-size: 16;
+    border-radius: 8;
+    height: 40;
+    color: white;
+}
+
+.nameLabel {
+    font-size: 20;
+}
+
+.authorLabel {
+    font-size: 14;
+}
+
+.descriptionLabel {
+    font-size: 14;
+}
+
+.searchButton {
+    background-color: #303030;
+    color: white;
+}
+
+.searchButton:active {
+    background-color: #212121;
+    color: white;
+}

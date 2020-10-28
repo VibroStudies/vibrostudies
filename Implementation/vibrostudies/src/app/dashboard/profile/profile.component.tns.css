@@ -1,0 +1,72 @@
+* {
+    color: white;
+}
+
+.title {
+    text-align: center;
+    font-size: 40;
+    margin-top: 20;
+}
+
+.section-title {
+    text-align: left;
+    font-size: 18;
+    border-bottom-color: #3e753b;
+    border-bottom-width: 3;
+    margin: 10;
+    padding-left: 5;
+}
+
+.container {
+    border-left-width: 45;
+    border-right-width: 45;
+    border-top-width: 15;
+    border-bottom-width: 15;
+    border-color: #424242;
+}
+
+.textFieldStyle {
+    border-bottom-color: white;
+    border-bottom-width: 2;
+    margin: 5 0;
+    placeholder-color: white;
+    font-size: 17;
+    padding: 10 0;
+}
+
+Button {
+    background: #3e753b;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 20;
+}
+
+Button:active {
+    color: white;
+    background: #325e2f;
+    font-size: 18;
+    border-radius: 8;
+    margin-top: 20;
+}
+
+.deleteProfileButton {
+    background: #6D0000;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 10;
+}
+
+.deleteProfileButton:active {
+    color: white;
+    background:#570000;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 10;
+}
+
+.errorMessage {
+    color: #A65C4E;
+    font-size: 18;
+    font-weight: bold;
+    margin-bottom: 20;
+}

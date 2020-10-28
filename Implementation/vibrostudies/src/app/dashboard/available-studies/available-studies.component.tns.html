@@ -1,0 +1,22 @@
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="availableStudies" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" backgroundColor="#424242">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout orientation="vertical" class="listItem">
+                <Label class="nameLabel" [text]="item.name"></Label>
+                <Label class="authorLabel" [text]="item.author.firstName + ' ' +  item.author.lastName"></Label>
+                <Label class="descriptionLabel" [text]="item.shortDescription.text" textWrap="true"></Label>
+                <Button text="Mehr anzeigen"
+                        class="readMoreButton"
+                        (tap)="onReadMore(item)">
+                </Button>
+            </StackLayout>
+        </ng-template>
+
+        <ng-template tkListViewHeader>
+            <GridLayout rows="auto" columns="70*,30*">
+                <TextField col="0" [(ngModel)]="this.searchKey" fontSize="15"></TextField>
+                <Button class="searchButton" col="1" text="Suchen" (tap)="searchForStudy()"></Button>
+            </GridLayout>
+    </ng-template>
+    </RadListView>
+</GridLayout>

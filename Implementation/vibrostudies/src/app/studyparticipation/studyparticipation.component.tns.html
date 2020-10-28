@@ -1,0 +1,114 @@
+<ScrollView *ngIf="!participating && !finished" orientation="vertical" hideActionBar backgroundColor="#424242">
+    <StackLayout>
+        <StackLayout orientation="vertical" class="introductionElements" backgroundColor="#424242">
+            <Label [text]="this.studywrapper.study.keyData.fullDescription" color="white" textWrap="true"></Label>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="confirmationButtonGroup">
+            <Button text="Zurück" class="goBackButton" (tap)="goBackToDash()">
+            </Button>
+            <Button text="Teilnehmen" class="participationButton" (tap)="onParticipation()">
+            </Button>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>
+
+
+<RadListView *ngIf="participating" [items]="currentStudyObjects" [itemTemplateSelector]="studyObjectType"
+    backgroundColor="#303030">
+    <ng-template tkListViewHeader>
+        <StackLayout>
+            <Label [text]="currentTitle" fontSize="30" textAlignment="center" textWrap="true"></Label>
+            <GridLayout [columns]="columns" class="progressbar">
+                <StackLayout col="0" class="progressbar-value"></StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkTemplateKey="VibrationPattern" let-item="item">
+        <StackLayout class="container">
+            <Button [text]="item.object.name" class="vibrationButton" (tap)="vibrate(item.object)"></Button>
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkTemplateKey="TextBlock" let-item="item">
+        <StackLayout class="container">
+            <Label [text]="item.object.text" textWrap="true"></Label>
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkTemplateKey="DateQuestion" let-item="item">
+        <StackLayout class="container">
+            <Label [text]="item.object.questionText" fontWeight="800" textWrap="true"></Label>
+            <DatePicker class="datepick" (dateChange)="onDateChanged(item.object, $event)"></DatePicker>
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkTemplateKey="LinearScaleQuestion" let-item="item">
+        <StackLayout class="container">
+            <Label [text]="item.object.questionText" fontWeight="800" textWrap="true"></Label>
+            <StackLayout orientation="horizontal">
+                <GridLayout rows="auto" columns="*">
+                    <Label row="0" horizontalAlignment="left" [text]="item.object.leftLabel"></Label>
+                    <Label row="0" horizontalAlignment="right" [text]="item.object.rightLabel"></Label>
+                </GridLayout>
+            </StackLayout>
+            <StackLayout orientation="horizontal">
+                <GridLayout rows="auto" [columns]="getLinearScaleColumns(item.object.numberOfChoices)">
+                    <div *ngFor="let i of asArray(item.object.numberOfChoices)" [col]="i">
+                        <CheckBox row="0" horizontalAlignment="center" id="{{ 'rb-' + item.object.id + '-' + i }}"
+                            boxType="circle" (checkedChange)="onLinearScaleSelect(item.object, i)" fillColor="white"></CheckBox>
+                    </div>
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkTemplateKey="MultipleChoiceQuestion" let-item="item">
+        <StackLayout class="container">
+            <Label [text]="item.object.questionText" fontWeight="800" textWrap="true"></Label>
+            <Label [text]="'Maximal wählbar: ' + item.object.maxChoices"></Label>
+            <StackLayout *ngFor="let answerChoice of item.object.answerOptions; let index = index">
+                <CheckBox id="{{ 'cb-' + item.object.id + '-' + index }}" [text]="answerChoice"
+                    (checkedChange)="onMultipleChoiceCheck(item.object, answerChoice, index)" fillColor="white"></CheckBox>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkTemplateKey="TextQuestion" let-item="item">
+        <StackLayout class="container">
+            <Label [text]="item.object.questionText" fontWeight="800" textWrap="true"></Label>
+            <TextField hint="Antwort eingeben" [(ngModel)]="item.object.answer"></TextField>
+        </StackLayout>
+    </ng-template>
+
+    <ng-template tkListViewFooter>
+        <FlexboxLayout *ngIf="participating" flexDirection="row" justifyContent="center">
+            <Button class="cancelButton" text="Abbrechen" (tap)="cancel()">
+            </Button>
+            <Button class="nextButton" text="Weiter" (tap)="goNext()">
+            </Button>
+        </FlexboxLayout>
+    </ng-template>
+</RadListView>
+
+
+<StackLayout *ngIf="finished" horizontalAlignment="center" padding="20" backgroundColor="#424242">
+    <Label class="finishedHeader" text="Vielen Dank für deine Teilnahme!"></Label>
+    <Label class="finishedText"
+        text="Der Studienleiter erhält deinen Namen und deine E-Mail-Adresse. Deine Ergebnisse sind anonymisiert und können nicht mit dir in Verbindung gebracht werden."
+        textWrap="true"></Label>
+    <Button class="finishButton" text="Ergebnisse abschicken" (tap)="finish()">
+    </Button>
+</StackLayout>
+
+
+<!-- <StackLayout *ngIf="finished" horizontalAlignment="center" padding="20" backgroundColor="#424242">
+    <Label text="Vielen Dank für Ihre Teilnahme!" fontSize="20"></Label>
+    <Label text="Der Studienleiter erhält deinen Namen und deine E-Mail-Adresse. 
+    Deine Ergebnisse sind anonymisiert und können nicht mit dir in Verbindung gebracht werden."
+        textWrap="true"></Label>
+    <Button class="finishButton" text="Ergebnisse abschicken" (tap)="finish()">
+    </Button>
+</StackLayout> -->

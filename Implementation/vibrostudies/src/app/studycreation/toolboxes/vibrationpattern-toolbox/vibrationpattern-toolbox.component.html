@@ -1,0 +1,23 @@
+<mat-card style="background-color: #212121;"><br>
+    <mat-card-title>Werkzeugkasten</mat-card-title>
+    <div style="margin-top: 10px;">
+        <mat-card-subtitle>Vibrationen oder Pausen per Drag and Drog links einfügen</mat-card-subtitle>
+    </div>
+    <mat-chip-list></mat-chip-list>
+    <mat-card-content>
+        <mat-divider></mat-divider>
+        <br />
+        <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="toolbox">
+            <div *ngFor="let tool of toolbox">
+                <div *ngIf="isVibration(tool); then showVibration; else showPause"></div>
+                <ng-template #showVibration>
+                    <mat-chip style="background-color: #6f8aab; cursor: move;" cdkDrag>Vibration</mat-chip>
+                </ng-template>
+                <ng-template #showPause>
+                    <mat-chip style="background-color: #ba624f; cursor: move;" cdkDrag>Pause</mat-chip>
+                </ng-template>
+                <br /><br />
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

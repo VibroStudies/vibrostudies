@@ -1,0 +1,18 @@
+.card-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    margin-left: 15px;
+    padding-bottom: 3px;
+}
+
+mat-card-title {
+    padding-top: 10px;
+}
+
+.greenButton {
+    background-color: #3e753b;
+    color: white;
+}

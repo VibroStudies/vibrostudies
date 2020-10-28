@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-title>
+        <mat-form-field style="width: 45vw;font-size:18px">
+            <input matInput placeholder="Name der Studie" [(ngModel)]="this.studywrapper.study.keyData.name"
+                 /> </mat-form-field>
+    </mat-card-title>
+    <mat-form-field class="textblock-textarea">
+        <textarea matInput [formControl]="this.shortControl" [errorStateMatcher]="this.matcher"
+            [placeholder]="'Kurzbeschreibung (' + this.studywrapper.study.keyData.shortDescription.text.length + '/200)'"></textarea>
+            <mat-error *ngIf="this.shortControl.invalid">Maximal 200 Zeichen erlaubt.</mat-error>
+    </mat-form-field>
+    <mat-form-field class="textblock-textarea">
+        <textarea matInput [(ngModel)]="this.studywrapper.study.keyData.fullDescription"
+            placeholder="Vollständige Beschreibung"></textarea>
+    </mat-form-field>
+</mat-card>
+<br>
+<mat-card>
+    <mat-card-title style = "font-size: 18px">Ausschlussfragen</mat-card-title>
+    <hr />
+    Amplitude im teilnehmenden Gerät verpflichtend?&nbsp;&nbsp;<mat-slide-toggle
+        [(ngModel)]="this.studywrapper.study.keyData.amplitudeNecessary"></mat-slide-toggle>
+    <hr><br>
+    <a mat-fab class="greenButton" (click)="onAddQualificationQuestion()" style="display: block; margin: auto;">
+        <mat-icon>add</mat-icon>
+    </a>
+    <br>
+    <div *ngFor="let qualiQuestion of this.studywrapper.study.keyData.qualiQuestions; let index=index">
+        <mat-card>
+            <mat-form-field style="font-size: 18px; width: 45vw;">
+                <input matInput placeholder="Frage" [(ngModel)]="qualiQuestion.questionText" />
+            </mat-form-field>
+            &nbsp;&nbsp; Notwendige Antwort: &nbsp;&nbsp; Nein &nbsp;
+            <mat-slide-toggle [(ngModel)]="qualiQuestion.requiredAnswer"></mat-slide-toggle>&nbsp;&nbsp;&nbsp;Ja<button
+                mat-icon-button class="redButton" (click)="removeFromArray(this.studywrapper.study.keyData.qualiQuestions, index)">
+                <mat-icon class="trashCan">delete</mat-icon>
+            </button>
+        </mat-card>
+        <br>
+    </div>    
+</mat-card>

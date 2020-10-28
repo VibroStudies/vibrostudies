@@ -1,0 +1,41 @@
+* {
+    color: white;
+}
+
+StackLayout {
+    padding: 20;
+}
+
+.registrationLabel {
+    text-align: center;
+    font-size: 30;
+}
+
+.subRegistrationLabel {
+    text-align: center;
+    font-size: 16;
+    padding-bottom: 25;
+}
+
+.textFieldStyle {
+    border-bottom-color: white;
+    margin: 5 0;
+    placeholder-color: white;
+    font-size: 20;
+    padding: 10 0;
+}
+
+.registerButton {
+    background: #6D0000;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 35;
+}
+
+.registerButton:active {
+    background: #570000;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 35;
+    color: white;
+}

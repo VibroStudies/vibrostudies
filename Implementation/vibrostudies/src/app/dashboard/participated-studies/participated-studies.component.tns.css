@@ -1,0 +1,20 @@
+*{
+    color: white;
+}
+
+.listItem {
+    border-bottom-color: #212121; 
+    border-bottom-width: 2;
+}
+
+.nameLabel {
+    font-size: 20;
+}
+
+.authorLabel {
+    font-size: 16;
+}
+
+.descriptionLabel {
+    font-size: 16;
+}

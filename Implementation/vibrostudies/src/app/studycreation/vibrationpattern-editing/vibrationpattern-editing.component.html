@@ -1,0 +1,72 @@
+<div class="vibration-contianer">
+    <div class="toolbox">
+        <app-vibrationpattern-toolbox [toolbox]="toolbox" [vibrationpatternCount]="vibrationpatterns.length">
+        </app-vibrationpattern-toolbox>
+    </div>
+
+    <div class="mainContent">
+        <a mat-fab class="greenButton" (click)="onAddVibrationPattern()" style="display: block; margin: auto;">
+            <mat-icon>add</mat-icon>
+        </a><br>
+        <div *ngFor="let vibrationpattern of vibrationpatterns; let index = index">
+            <mat-card>
+                <mat-card-title>
+                    <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
+                        <input matInput placeholder="Bezeichnung" [(ngModel)]="vibrationpattern.name" />
+                    </mat-form-field>
+                    <button mat-icon-button class="redButton" (click)="removeFromStudy(index, vibrationpattern.id)">
+                        <mat-icon class="trashCan">delete</mat-icon>
+                    </button>
+                </mat-card-title>
+                <div cdkDropList class="vibrationpatternList" id="vibrationpatternList{{ index }}"
+                    [cdkDropListData]="vibrationpattern.vibrationPatternElements"
+                    (cdkDropListDropped)="onDrop($event, index)">
+                    <div *ngFor="let item of vibrationpattern.vibrationPatternElements; let elIndex = index">
+                        <div *ngIf="isVibration(item); then showVibration; else showPause"></div>
+
+                        <ng-template #showVibration>
+                            <mat-card class="vibration-card" cdkDrag>{{elIndex+1}}. Vibration&nbsp;&nbsp;
+                                <mat-form-field>
+                                    <input matInput placeholder="Länge in ms"
+                                        [formControl]="this.formControls[index][elIndex][0]"
+                                        [errorStateMatcher]="this.matcher" />
+                                    <mat-error *ngIf="this.formControls[index][elIndex][0].invalid">Falsche Eingabe.
+                                    </mat-error>
+                                </mat-form-field>&nbsp;&nbsp;
+                                <mat-form-field>
+                                    <input matInput placeholder="Amplitude (1 bis 255)"
+                                        [formControl]="this.formControls[index][elIndex][1]"
+                                        [errorStateMatcher]="this.matcher" />
+                                    <mat-error *ngIf="this.formControls[index][elIndex][1].invalid">Falsche Eingabe.
+                                    </mat-error>
+                                </mat-form-field><button mat-icon-button class="redButton"
+                                    (click)="removeFromVibrationPattern(index, elIndex)">
+                                    <mat-icon class="trashCan">delete</mat-icon>
+                                </button></mat-card>
+                        </ng-template>
+                        <ng-template #showPause>
+                            <mat-card class="pause-card" cdkDrag>{{elIndex+1}}. Pause&nbsp;&nbsp;<mat-form-field>
+                                    <input matInput placeholder="Länge in ms"
+                                        [formControl]="this.formControls[index][elIndex][0]"
+                                        [errorStateMatcher]="this.matcher" />
+                                    <mat-error *ngIf="this.formControls[index][elIndex][0].invalid">Falsche Eingabe.
+                                    </mat-error>
+
+                                </mat-form-field><button mat-icon-button class="redButton"
+                                    (click)="removeFromVibrationPattern(index, elIndex)">
+                                    <mat-icon class="trashCan">delete</mat-icon>
+                                </button></mat-card>
+                        </ng-template>
+                        <div *ngIf="elIndex+1 != vibrationpattern.vibrationPatternElements.length">
+                            <br />
+                        </div>
+                    </div>
+                    <div class="droplistSubtitle">Hier Elemente aus dem Wergzeugkasten einfügen, um eine Abfolge
+                        festzulegen.</div>
+                </div>
+            </mat-card>
+            <br>
+        </div>
+    </div>
+
+</div>

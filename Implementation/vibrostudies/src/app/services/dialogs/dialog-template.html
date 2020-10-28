@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Bist du dir sicher?</h1>
+<div mat-dialog-content>
+  <p>{{data.message}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Abbrechen</button>
+  <button mat-button (click)="onConfirm()">Bestätigen</button>
+</div>

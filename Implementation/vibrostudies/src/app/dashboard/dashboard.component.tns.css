@@ -1,0 +1,51 @@
+/* Add mobile styles for the component here.  */
+button {
+    font-size: 15;
+    horizontal-align: center;
+}
+
+RadSideDrawer .drawerContentText {
+    font-size: 15;
+    padding: 10;
+}
+
+RadSideDrawer .drawerContentButton {
+    margin: 10;
+    horizontal-align: left;
+}
+
+.sideStackLayout {
+    background-color: #303030;
+    padding-bottom: 15;
+}
+
+.sideTitleStackLayout {
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    font-size: 22;
+}
+
+.sideDrawerItem {
+    color: white;
+    width: 80%;
+    android-elevation: 0;
+    horizontal-align: left;
+    text-align: left;
+    border-radius: 20;
+    background-color: #303030;
+    font-size: 18;
+
+}
+
+.sideDrawerItem:highlighted {
+    width: 80%;
+    android-elevation: 0;
+    horizontal-align: left;
+    text-align: left;
+    border-radius: 20;
+    background-color: #212121;
+    color: white;
+    font-size: 18;
+
+}

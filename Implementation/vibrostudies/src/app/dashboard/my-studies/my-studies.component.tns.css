@@ -1,0 +1,46 @@
+* {
+    color: white;
+}
+
+.listItem {
+    border-bottom-color: #212121; 
+    border-bottom-width: 2;
+}
+
+.nameLabel {
+    font-size: 20;
+}
+
+.descriptionLabel {
+    font-size: 16;
+}
+
+.greenButton {
+    background: #3e753b;
+    border-radius: 8;
+    font-size: 18;
+    height: 40;
+}
+
+.greenButton:active {
+    background: #325e2f;
+    border-radius: 8;
+    font-size: 18;
+    height: 40;
+    color: white;
+}
+
+.redButton {
+    background: #6D0000;
+    border-radius: 8;
+    font-size: 18;
+    height: 40;
+}
+
+.redButton:active {
+    background: #570000;
+    border-radius: 8;
+    font-size: 18;
+    height: 40;
+    color: white;
+}

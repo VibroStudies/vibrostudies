@@ -1,0 +1,18 @@
+.textblock-textarea {
+    width: 100%;
+  }
+
+  .greenButton {
+    background-color: #3e753b;
+    color: white;
+}
+
+.redButton {
+  color: #6D0000;
+  background-color: #FF000000;
+}
+
+.trashCan {
+  font-size: 40px;
+}
+  

@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.snackbar-style {
+    background-color: #212121;
+    color: white;
+}
+
+.greenButton {
+    background-color: #3e753b;
+    color: white;
+}
+
+.redButton {
+    background-color: #6D0000;
+    color: white;
+}
+
+.brownButton {
+    background-color: #79553d;
+    color: white;
+}
+
+input, textarea {
+    caret-color: #3e753b !important;
+}
+
+.mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #3e753b !important;
+    font-size: 14px !important;
+}
+
+.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: white !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #3e753b !important;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #3e753b !important;
+}

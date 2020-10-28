@@ -1,0 +1,57 @@
+<a mat-fab class="greenButton" (click)="onAddQuestion()" style="display: block; margin: auto;">
+    <mat-icon>add</mat-icon>
+</a><br>
+<div *ngFor="let question of questions; let index = index">
+    <mat-card>
+        <mat-card-title>
+            <h3>{{this.getStudyObjectTypeName(question)}}</h3>
+            <mat-form-field class="example-full-width" style="width: 50%;font-size:18px">
+                <input matInput placeholder="Bezeichnung" [(ngModel)]="question.name" />
+            </mat-form-field>&nbsp;&nbsp;
+            <button mat-icon-button class="redButton" (click)="removeFromStudy(index, question.id)">
+                <mat-icon class="trashCan">delete</mat-icon>
+            </button>
+        </mat-card-title>
+        <!--FRAGEINHALT-->
+        <mat-form-field class="example-full-width" style="width: 50%;">
+            <input matInput placeholder="Fragestellung" [(ngModel)]="question.questionText" />
+        </mat-form-field>
+
+
+        <div *ngIf="isLinearScaleQuestion(question) == 'linearScale'">
+            <mat-form-field class="example-full-width" style="width: 32%;">
+                <input matInput placeholder="Anzahl der Wahlmöglichkeiten (2 bis 12)" [formControl]="this.formControls[index][1]" [errorStateMatcher]="this.matcher" />
+                <mat-error *ngIf="this.formControls[index][1].invalid">Fehlerhafte Eingabe.</mat-error>
+            </mat-form-field>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width" style="width: 32%;">
+                <input matInput placeholder="Linkes Label" [(ngModel)]="question.leftLabel" />
+            </mat-form-field>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width" style="width: 32%;">
+                <input matInput placeholder="Rechtes Label" [(ngModel)]="question.rightLabel" />
+            </mat-form-field>
+        </div>
+        <div *ngIf="isLinearScaleQuestion(question) == 'multipleChoice'">
+            <!--<mat-form-field class="example-full-width" style="width: 20%;">
+                <input matInput placeholder="Mindestens auszuwählen" [(ngModel)]="question.minSelectable" />
+            </mat-form-field>&nbsp;&nbsp;-->
+            <mat-form-field class="example-full-width" style="width: 20%;">
+                <input matInput placeholder="Maximal auswählbar" [formControl]="this.formControls[index][0]" [errorStateMatcher]="this.matcher" />
+                <mat-error *ngIf="this.formControls[index][0].invalid">Fehlerhafte Eingabe.</mat-error>
+            </mat-form-field><br>
+            <label>Antwortmöglichkeiten</label><br><br>
+            <div *ngFor="let answerChoice of question.answerOptions; let index = index">
+                <mat-form-field class="example-full-width" style="width: 32%;">
+                    <input matInput placeholder={{index+1}} [ngModel]="question.answerOptions[index]" (change)="valueUpdate(question, index, $event)"/>
+                </mat-form-field>
+                <button mat-icon-button class="redButton" (click)="removeFromArray(question.answerOptions, index)">
+                    <mat-icon class="trashCan">delete</mat-icon>
+                </button>
+            </div>
+            <a mat-fab class="greenButton" (click)="onAddAnswerChoice(question)" style="display: block; margin: auto;">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+
+    </mat-card>
+    <br>
+</div>

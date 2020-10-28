@@ -1,0 +1,42 @@
+<mat-toolbar>
+    <img src="assets/images/Icon.png" style="height: 4vh;" />
+    <span>&nbsp;&nbsp;VibroStudies</span>
+    <span class="flexExpand"></span>
+    <a class="helpButton" mat-flat-button href="https://www.youtube.com/watch?v=RfdquOH7AxI" target="_blank">
+        <mat-icon>help</mat-icon>&nbsp;Hilfe
+    </a>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side">
+        <mat-nav-list><br>
+            <div style="margin-left: 15px;">
+                <h2>Hallo {{ this.authService.getUser().firstName }}!&nbsp;<mat-icon
+                        style="position:relative;top: 5px;">emoji_people</mat-icon>
+                </h2>
+            </div>
+            <mat-divider></mat-divider>
+            <a mat-list-item [routerLink]="['profile']">
+                <mat-icon>person</mat-icon>&nbsp;Profil
+            </a>
+            <div *ngIf="this.authService.getUser().permission != 0">
+                <mat-divider></mat-divider>
+                <a mat-list-item [routerLink]="['my-studies']">
+                    <mat-icon>question_answer</mat-icon>&nbsp;Meine Studien
+                </a>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div class="bottomrow">
+                <mat-divider></mat-divider>
+                <a mat-list-item (click)="logout()" class>
+                    <mat-icon>exit_to_app</mat-icon>&nbsp;Abmelden
+                </a>
+            </div>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+        <br><br>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,31 @@
+<a mat-fab class="greenButton" (click)="onAddTextBlock()" style="display: block; margin: auto;">
+    <mat-icon>add</mat-icon>
+</a><br>
+<div *ngFor="let textblock of textblocks; let index = index">
+    <mat-card>
+        <mat-card-title>
+            <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
+                <input matInput placeholder="Bezeichnung" [formControl]="this.formControls[index][0]"
+                    [errorStateMatcher]="this.matcher" />
+                <mat-hint style="font-size: 15px;color: #f44336;"
+                    *ngIf="this.formControls[index][0].hasError('required')">
+                    Feld
+                    darf nicht leer sein.</mat-hint>
+            </mat-form-field>
+
+            <button mat-icon-button class="redButton" (click)="removeFromStudy(index, textblock.id)">
+                <mat-icon class="trashCan">delete</mat-icon>
+            </button>
+        </mat-card-title>
+        <mat-form-field class="textblock-textarea">
+            <mat-label>Text</mat-label>
+            <textarea matInput [formControl]="this.formControls[index][1]"
+                [errorStateMatcher]="this.matcher"></textarea>
+            <mat-hint style="font-size: 15px;color: #f44336;" *ngIf="this.formControls[index][1].hasError('required')">
+                Feld
+                darf nicht leer sein.</mat-hint>
+        </mat-form-field>
+        <br>
+    </mat-card>
+    <br>
+</div>

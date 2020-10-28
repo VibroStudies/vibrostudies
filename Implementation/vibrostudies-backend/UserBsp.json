@@ -1,0 +1,26 @@
+[
+    {
+        "id": 3,
+        "firstName": "Adrian",
+        "lastName": "Furrer",
+        "password": "anneIstWirklichSuper",
+        "email": "adrian@gmail.de",
+        "userPermission": 1
+    },
+    {
+        "id": 1,
+        "firstName": "Anne",
+        "lastName": "Hermann",
+        "password": "hi",
+        "email": "annehe@online.de",
+        "userPermission": 1
+    },
+    {
+        "id": 2,
+        "firstName": "Tizian",
+        "lastName": "Bitschi",
+        "password": "anneIstSuper",
+        "email": "tizian@gmail.de",
+        "userPermission": 1
+    }
+]

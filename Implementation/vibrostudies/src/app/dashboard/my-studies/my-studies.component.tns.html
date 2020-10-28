@@ -1,0 +1,16 @@
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="studies" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" backgroundColor="#424242">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout orientation="vertical" class="listItem">
+                <Label class="nameLabel" [text]="item.name"></Label>
+                <Label class="descriptionLabel" [text]="item.shortDescription.text" textWrap="true"></Label>
+                <Button class="greenButton" text="Demo" (tap)="onDemo(item.id)"></Button>
+                <Button class="greenButton" *ngIf="item.studyStatus == 0" text="Veröffentlichen" (tap)="onPublish(item)"></Button>
+                <Button class="redButton" *ngIf="item.studyStatus == 1" text="Beenden" (tap)="onEndClick(item)"></Button>
+                <Button class="greenButton" *ngIf="item.studyStatus == 2" text="Ergebnisse" (tap)="getCSV(item.id)"></Button>
+                <Button class="greenButton" *ngIf="item.studyStatus == 2" text="Teilnehmerliste" (tap)="getParticipants(item.id)"></Button>
+                <Button class="redButton" text="Löschen" (tap)="onDelete(item)"></Button>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+</GridLayout>

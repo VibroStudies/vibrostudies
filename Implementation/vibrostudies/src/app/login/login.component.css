@@ -1,0 +1,18 @@
+.full-page {
+    height: 100%;
+    display: flex;
+    background-color: #303030;
+}
+
+.login-card {
+    margin: auto;
+    width: 350px;
+}
+
+.login-field {
+    width: 100%;
+}
+
+mat-card {
+    padding: 50px;
+}

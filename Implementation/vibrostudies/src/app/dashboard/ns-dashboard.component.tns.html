@@ -1,0 +1,28 @@
+<ActionBar [title]="this.sideDrawer.title" backgroundColor="#212121">
+    <ActionItem android.position="actionBarIfRoom" android.systemIcon="ic_menu_sort_by_size" (tap)="this.sideDrawer.switchDrawer()">
+    </ActionItem>
+</ActionBar>
+
+<RadSideDrawer name="radDrawer" ref="radDrawer" #radDrawer tkExampleTitle tkToggleNavButton drawerLocation="Right">
+    <GridLayout tkDrawerContent rows="56, *" class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label *ngIf="this.authService.getUser()" [text]="'Hallo, ' + this.authService.getUser().firstName + ' ' + this.authService.getUser().lastName + '!'" textWrap="true"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+        </StackLayout>
+        <ScrollView row="1">
+            <StackLayout class="sideStackLayout">
+                <Button text="Mein Profil" [nsRouterLink]="['profile']" (tap)="this.sideDrawer.closeDrawer()"
+                    class="sideDrawerItem"></Button>
+                <Button text="Verfügbare Studien" [nsRouterLink]="['available-studies']"
+                    (tap)="this.sideDrawer.closeDrawer()" class="sideDrawerItem"></Button>
+                <Button text="Meine Studien" [nsRouterLink]="['my-studies']" (tap)="this.sideDrawer.closeDrawer()"
+                    class="sideDrawerItem"></Button>
+                <Button text="Teilgenommene Studien" [nsRouterLink]="['participated-studies']"
+                    (tap)="this.sideDrawer.closeDrawer()" class="sideDrawerItem"></Button>
+                <Button text="Abmelden" class="sideDrawerItem" (tap)="logout()"></Button>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+    <page-router-outlet actionBarVisibility="never" tkMainContent (swipe)="this.sideDrawer.openDrawer()">
+    </page-router-outlet>
+</RadSideDrawer>

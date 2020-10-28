@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-title class="header">
+        Accountdaten
+    </mat-card-title><br>
+    <mat-divider></mat-divider><br><br>
+    <mat-card-content>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="Vorname" name="firstName" [(ngModel)]="this.user.firstName" type="text" />
+        </mat-form-field>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="Nachname" name="lastName" [(ngModel)]="this.user.lastName" type="text" />
+        </mat-form-field>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="E-Mail" name="email" [(ngModel)]="this.user.email.email" type="email" />
+        </mat-form-field>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="Vorheriges Passwort" name="oldPassword" [(ngModel)]="this.oldPassword" type="password" />
+        </mat-form-field>
+    </mat-card-content>
+    <button mat-flat-button class="greenButton" (click)="saveUser()">Speichern</button>
+</mat-card>
+<br>
+<mat-card>
+    <mat-card-title class="header">
+        Passwort ändern
+    </mat-card-title><br>
+    <mat-divider></mat-divider><br><br>
+    <mat-card-content>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="Vorheriges Passwort" name="oldPassword" [(ngModel)]="this.oldPassword" type="password" />
+        </mat-form-field>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="Neues Passwort" name="newPassword" [(ngModel)]="this.newPassword" type="password" />
+        </mat-form-field>
+        <mat-form-field class="login-field">
+            <input matInput placeholder="Neues Passwort erneut eingeben" name="newPasswordRepeat" [(ngModel)]="this.newPasswordRepeat" type="password" />
+        </mat-form-field>
+    </mat-card-content>
+    <button mat-flat-button class="greenButton" (click)="savePassword()">Speichern</button>
+</mat-card>
+<br>
+<!--<mat-card>
+    <mat-card-title>
+        Accountrechte
+    </mat-card-title><br>
+    <mat-divider></mat-divider><br><br>
+    <mat-card-content>
+
+    </mat-card-content>
+</mat-card>
+<br>-->
+<mat-card>
+    <mat-card-title class="header">
+        Account löschen
+    </mat-card-title><br>
+    <mat-divider></mat-divider><br><br>
+    <mat-card-content>
+        <button mat-flat-button class="redButton" (click)="deleteUser()">Endgültig löschen</button>
+    </mat-card-content>
+</mat-card>

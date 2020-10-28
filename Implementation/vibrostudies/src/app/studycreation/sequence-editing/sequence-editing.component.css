@@ -1,0 +1,40 @@
+.vibration-container {
+    height: 91vh;
+}
+
+
+.studyObjectList {
+    border-style: dashed;
+    border-width: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.toolbox {
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    right: 15px;
+}
+
+.mainContent {
+    margin-right: 265px;
+}
+
+.droplistSubtitle {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.redButton {
+    color: #6D0000;
+    background-color: #FF000000;
+}
+
+.trashCan {
+    font-size: 40px;
+}

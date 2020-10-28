@@ -1,0 +1,147 @@
+* {
+    font-size: 15;
+    white-space: normal;
+    color: white;
+}
+
+.introductionElements {
+    horizontal-align: left;
+    padding: 5%;
+}
+
+.confirmationButtonGroup {
+    margin-top: 10%;
+    horizontal-align: center;
+}
+
+.container {
+    margin-left: 20;
+    margin-right: 20;
+    margin-bottom: 10;
+    background-color: #424242;
+    border-width: 0.5;
+    border-color: black;
+    border-radius: 4;
+}
+
+TextField {
+    placeholder-color: white;
+}
+
+.progressbar {
+    height: 15;
+    margin: 10;
+    border-radius: 10;
+    background: #ECEFF1;
+}
+
+.progressbar-value {
+    background: #3e753b;
+    border-radius: 10;
+}
+
+.goBackButton {
+    background: #6D0000;
+    border-radius: 8;
+    font-size: 16;
+}
+
+.goBackButton:active {
+    background: #570000;
+    border-radius: 8;
+    font-size: 16;
+    color: white;
+}
+
+.participationButton {
+    background: #3e753b;
+    border-radius: 8;
+    font-size: 22;
+}
+
+.participationButton:active {
+    background: #325e2f;
+    border-radius: 8;
+    font-size: 22;
+    color: white;
+}
+
+.vibrationButton {
+    background-color: #303030;
+    border-radius: 8;
+    height: 40;
+}
+
+.vibrationButton:active {
+    background-color: #212121;
+    border-radius: 8;
+    height: 40;
+    color: white;
+}
+
+.cancelButton {
+    background-color: #6D0000;
+    border-radius: 8;
+    font-size: 18;
+    width: 150;
+}
+
+.cancelButton:active {
+    background-color: #570000;
+    border-radius: 8;
+    font-size: 18;
+    width: 150;
+    color: white;
+}
+
+.nextButton {
+    background-color: #3e753b;
+    border-radius: 8;
+    font-size: 18;
+    width: 150;
+}
+
+.nextButton:active {
+    background-color: #325e2f;
+    border-radius: 8;
+    font-size: 18;
+    width: 150;
+    color: white;
+}
+
+.finishButton {
+    background-color: #3e753b;
+    border-radius: 8;
+    font-size: 20; /*noch testen*/
+    width: 300;
+    margin-top: 40;
+}
+
+.finishButton:active {
+    background-color: #3e753b;
+    border-radius: 8;
+    font-size: 20; /*noch testen*/
+    width: 300;
+    margin-top: 40;
+    color: white;
+}
+
+.datepick {
+    background-color: rgb(194, 194, 194);
+    border-color: #212121;
+    border-width: 3;
+    border-radius: 10;
+    color: white;
+    vertical-align: middle;
+}
+
+.finishedHeader {
+    font-size: 50;
+}
+
+.finishedText {
+    font-size: 20;
+    margin-top: 20;
+}
+
+

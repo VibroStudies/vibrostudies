@@ -1,0 +1,59 @@
+.vibration-container {
+    height: 91vh;
+}
+
+.toolbox {
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    right: 15px;
+}
+
+.mainContent {
+    margin-right: 265px;
+}
+
+mat-chip {
+    margin: 5px;
+}
+
+.vibration-card {
+    background-color:#6f8aab;
+    cursor: move;
+    font-size: 16px;
+}
+
+.pause-card {
+    background-color:#ba624f;
+    cursor: move;
+    font-size: 16px;
+}
+
+.vibrationpatternList {
+    border-style: dashed;
+    border-width: 5px;
+    border-radius: 10px;
+    font-size: large;
+    padding: 15px;
+}
+
+.droplistSubtitle {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.greenButton {
+    background-color: #3e753b;
+    color: white;
+}
+
+.redButton {
+    color: #6D0000;
+    background-color: #FF000000;
+}
+
+.trashCan {
+    font-size: 40px;
+}

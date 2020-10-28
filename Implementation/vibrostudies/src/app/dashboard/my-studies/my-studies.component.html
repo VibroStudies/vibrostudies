@@ -1,0 +1,47 @@
+<div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngFor="let keyData of studies; let index = index">
+    <mat-card>
+        <div class="card-container">
+            <mat-card-title class="card-container-left">{{ keyData.name }}</mat-card-title>
+            <div class="buttonrow">
+                <button *ngIf="keyData.studyStatus == 0" mat-flat-button class="greenButton" (click)="onEditClick(keyData)">
+                    <mat-icon>edit</mat-icon>&nbsp;Bearbeiten
+                </button>
+
+                <button *ngIf="keyData.studyStatus == 0" mat-flat-button class="brownButton" (click)="publish(keyData)">
+                    <mat-icon>publish</mat-icon>&nbsp;Veröffentlichen
+                </button>
+
+                <button *ngIf="keyData.studyStatus == 1" mat-flat-button class="greenButton" (click)="onEndClick(keyData)">
+                    <mat-icon>clear</mat-icon>&nbsp;Beenden
+                </button>
+
+                <button *ngIf="keyData.studyStatus == 2" mat-flat-button class="brownButton" (click)="resetStudy(keyData.id)">
+                    <mat-icon>replay</mat-icon>&nbsp;Zurücksetzen
+                </button>
+
+                <button *ngIf="keyData.studyStatus == 2" mat-flat-button class="greenButton" (click)="getCSV(keyData.id)">
+                    <mat-icon>assessment</mat-icon>&nbsp;Ergebnisse
+                </button>
+
+                <button *ngIf="keyData.studyStatus == 2" mat-flat-button class="greenButton" (click)="getParticipants(keyData.id)">
+                    <mat-icon>supervisor_account</mat-icon>&nbsp;Teilnehmerliste
+                </button>
+
+                <button mat-flat-button class="redButton" (click)="onDelete(keyData)" style="margin-left: 15px">
+                    <mat-icon>delete</mat-icon>&nbsp;Löschen
+                </button>
+            </div>
+        </div><br>
+        <mat-divider></mat-divider><br>
+        <mat-card-content style="word-wrap: normal;">
+            {{keyData.shortDescription.text}}
+        </mat-card-content>
+    </mat-card>
+    <br />
+</div>
+<a mat-fab class="greenButton" (click)="onNewClick()" style="display: block; margin: auto;">
+    <mat-icon>add</mat-icon>
+</a>

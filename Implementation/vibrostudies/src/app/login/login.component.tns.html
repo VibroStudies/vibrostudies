@@ -1,0 +1,15 @@
+<ScrollView hideActionBar>
+        <StackLayout backgroundColor="#424242">
+                <Image src="res://logo" marginTop="40"></Image>
+                <TextField class="textFieldStyle" hint="E-Mail-Adresse" keyboardType="email" [(ngModel)]="email">
+                </TextField>
+                <TextField class="textFieldStyle" hint="Passwort" secure="true" [(ngModel)]="password">
+                </TextField>
+                <Button text="Anmelden" class="loginButton" (tap)="login()">
+                </Button>
+                <Label class="oderLabel" text="─────── oder ───────" textWrap="false" horizontalAlignment="center">
+                </Label>
+                <Button text="Registrieren" class="registerButton" (tap)="toRegister()">
+                </Button>
+        </StackLayout>
+</ScrollView>

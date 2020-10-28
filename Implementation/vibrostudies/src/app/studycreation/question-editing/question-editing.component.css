@@ -1,0 +1,13 @@
+.redButton {
+    color: #6D0000;
+    background-color: #FF000000;
+}
+
+.greenButton {
+    background-color: #3e753b;
+    color: white;
+}
+
+.trashCan {
+    font-size: 40px;
+}

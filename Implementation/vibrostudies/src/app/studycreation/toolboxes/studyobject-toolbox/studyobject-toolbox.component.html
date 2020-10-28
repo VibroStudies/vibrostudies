@@ -1,0 +1,125 @@
+<mat-card class="scrollable" style="background-color: #212121;"><br>
+    <mat-card-title>Werkzeugkasten</mat-card-title>
+    <div style="margin-top: 10px;">
+        <mat-card-subtitle>Erstellte Objekte per Drag and Drog links einfügen</mat-card-subtitle>
+    </div>
+    <mat-card-content [style.overflow]="'auto'" [style.height.vh]="'77'" >
+        <mat-divider></mat-divider>
+        <br />
+        <mat-accordion multi>
+            <mat-expansion-panel *ngIf="getAmount('DateQuestion') > 0" style="background-color: #856e68;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Datumfragen
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('DateQuestion')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'DateQuestion'">
+                            <mat-card cdkDrag style="cursor: move; height: 20px" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('TextQuestion') > 0" style="background-color: #747d80;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Freitextfragen
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('TextQuestion')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'TextQuestion'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('LinearScaleQuestion') > 0" style="background-color: #6f8aab;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Lineare Skalen
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('LinearScaleQuestion')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'LinearScaleQuestion'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('MultipleChoiceQuestion') > 0" style="background-color: #a68a79;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Multiple Choice Fragen
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('MultipleChoiceQuestion')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'MultipleChoiceQuestion'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('TextBlock') > 0" style="background-color: #7da278;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Textblöcke
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('TextBlock')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'TextBlock'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('VibrationPattern') > 0" style="background-color: #A65C4E;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Vibrationsmuster
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('VibrationPattern')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'VibrationPattern'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('SectionElement') > 0" style="background-color: #9dbae1;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Studienseiten
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('SectionElement')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'SectionElement'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="getAmount('Section') > 0" style="background-color: #dd9fb2;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Abschnitte
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div cdkDropList id="toolbox" [cdkDropListConnectedTo]="connectedLists" [cdkDropListData]="getObjectsPerType('Section')">
+                    <div *ngFor="let element of toolbox">
+                        <div *ngIf="this.colorService.getStudyObjectType(element) == 'Section'">
+                            <mat-card cdkDrag style="cursor: move;" [style.background-color]="this.colorService.getStudyObjectColor(element)">{{ element.name }}</mat-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,54 @@
+* {
+    color: white;
+}
+
+StackLayout {
+    padding: 20;
+}
+
+Image {
+    width: 125;
+    height: 125;
+    margin-bottom: 30;
+}
+
+.textFieldStyle {
+    border-bottom-color: white;
+    margin: 5 0;
+    placeholder-color: white;
+    font-size: 20;
+    padding: 10 0;
+}
+
+.loginButton {
+    background: #3e753b;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 20;
+}
+
+.loginButton:active {
+    background: #325e2f;
+    border-radius: 8;
+    font-size: 18;
+    margin-top: 20;
+    color: white;
+}
+
+.registerButton {
+    background: #6D0000;
+    border-radius: 8;
+    font-size: 18;
+}
+
+.registerButton:active {
+    background: #570000;
+    border-radius: 8;
+    font-size: 18;
+    color: white;
+}
+
+.oderLabel {
+    font-size: 18;
+    padding: 50 0;
+}

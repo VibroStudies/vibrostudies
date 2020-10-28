@@ -1,0 +1,11 @@
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="studies" backgroundColor="#424242">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout orientation="vertical" class="listItem">
+                <Label class="nameLabel" [text]="item.name"></Label>
+                <Label class="authorLabel" [text]="item.author.firstName + ' ' + item.author.lastName"></Label>
+                <Label textWrap="true" class="descriptionLabel" [text]="item.shortDescription.text"></Label>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+</GridLayout>
