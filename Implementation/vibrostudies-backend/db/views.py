@@ -203,15 +203,15 @@ def saveStudy(request):
                         index = index + 1
                 elif studyObject["objectType"] == "TextBlock":
                     if objectResult.count() == 1:
-                        textBlock = TextBlock(id=objectResult.first().id, name=studyObject["_name"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=3, text=studyObject["_text"])
+                        textBlock = TextBlock(id=objectResult.first().id, name=studyObject["_name"], displayName=studyObject["_displayName"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=3, text=studyObject["_text"])
                     else:                    
-                        textBlock = TextBlock(name=studyObject["_name"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=3, text=studyObject["_text"])
+                        textBlock = TextBlock(name=studyObject["_name"], displayName=studyObject["_displayName"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=3, text=studyObject["_text"])
                     textBlock.save()
                 elif studyObject["objectType"] == "VibrationPattern":
                     if objectResult.count() == 1:
-                        vibrationPattern = VibrationPattern(id=objectResult.first().id, name=studyObject["_name"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=5, randomStrategy=0)
+                        vibrationPattern = VibrationPattern(id=objectResult.first().id, name=studyObject["_name"], displayName=studyObject["_displayName"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=5, randomStrategy=0)
                     else:
-                        vibrationPattern = VibrationPattern(name=studyObject["_name"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=5, randomStrategy=0)
+                        vibrationPattern = VibrationPattern(name=studyObject["_name"], displayName=studyObject["_displayName"], studyId=study, objectId=studyObject["_id"], studyObjectTypes=5, randomStrategy=0)
                     vibrationPattern.save()
 
                     VibrationPatternElement.objects.filter(studyId=study, pattern=vibrationPattern).delete()
@@ -244,9 +244,9 @@ def saveStudy(request):
             for sectionElement in request.data["study"]["_sectionElements"]:
                 seResult = sectionElementsResult.filter(objectId=sectionElement["_id"])
                 if seResult.count() == 1:
-                    seToSave = SectionElement(id=seResult.first().id, name=sectionElement["_name"], studyId=study, objectId=sectionElement["_id"], studyObjectTypes=2, randomStrategy=sectionElement["_randomStrategy"], resultRelevant=sectionElement["_resultRelevant"], skippable=sectionElement["_skippable"])
+                    seToSave = SectionElement(id=seResult.first().id, name=sectionElement["_name"], displayName=sectionElement["_displayName"], studyId=study, objectId=sectionElement["_id"], studyObjectTypes=2, randomStrategy=sectionElement["_randomStrategy"], resultRelevant=sectionElement["_resultRelevant"], skippable=sectionElement["_skippable"])
                 else: 
-                    seToSave = SectionElement(name=sectionElement["_name"], studyId=study, objectId=sectionElement["_id"], studyObjectTypes=2, randomStrategy=sectionElement["_randomStrategy"], resultRelevant=sectionElement["_resultRelevant"], skippable=sectionElement["_skippable"])
+                    seToSave = SectionElement(name=sectionElement["_name"], displayName=sectionElement["_displayName"], studyId=study, objectId=sectionElement["_id"], studyObjectTypes=2, randomStrategy=sectionElement["_randomStrategy"], resultRelevant=sectionElement["_resultRelevant"], skippable=sectionElement["_skippable"])
                 seToSave.save()
                 usedSectionElementsId.append(seToSave.id)
 
@@ -273,9 +273,9 @@ def saveStudy(request):
             for section in request.data["study"]["_sections"]:
                 sectionResult = sectionsResult.filter(objectId=section["_id"])
                 if sectionResult.count() == 1:
-                    sToSave = Section(id=sectionResult.first().id, name=section["_name"], studyId=study, objectId=section["_id"], studyObjectTypes=1, randomStrategy=section["_randomStrategy"], resultRelevant=section["_resultRelevant"], skippable=section["_skippable"])
+                    sToSave = Section(id=sectionResult.first().id, name=section["_name"], displayName=section["_displayName"], studyId=study, objectId=section["_id"], studyObjectTypes=1, randomStrategy=section["_randomStrategy"], resultRelevant=section["_resultRelevant"], skippable=section["_skippable"])
                 else:
-                    sToSave = Section(name=section["_name"], studyId=study, objectId=section["_id"], studyObjectTypes=1, randomStrategy=section["_randomStrategy"], resultRelevant=section["_resultRelevant"], skippable=section["_skippable"])
+                    sToSave = Section(name=section["_name"], displayName=section["_displayName"], studyId=study, objectId=section["_id"], studyObjectTypes=1, randomStrategy=section["_randomStrategy"], resultRelevant=section["_resultRelevant"], skippable=section["_skippable"])
                 sToSave.save()
                 usedSectionIds.append(sToSave.id)
 
@@ -565,6 +565,7 @@ def studyView(request, pk):
                 sections.append({
                     "id": section.objectId,
                     "name": section.name,
+                    "displayName": section.displayName,
                     "skippable": section.skippable,
                     "resultRelevant": section.resultRelevant,
                     "randomStrategy": section.randomStrategy,
@@ -589,6 +590,7 @@ def studyView(request, pk):
                 sectionElements.append({
                     "id": sectionElement.objectId,
                     "name": sectionElement.name,
+                    "displayName": sectionElement.displayName,
                     "randomStrategy": sectionElement.randomStrategy,
                     "resultRelevant": sectionElement.resultRelevant,
                     "studyObjects": sectionElementToStudyObjectRefs,
@@ -603,6 +605,7 @@ def studyView(request, pk):
                 studyObjects.append({
                     "id": textBlock.objectId,
                     "name": textBlock.name,
+                    "displayName": textBlock.displayName,
                     "text": textBlock.text,
                     "studyObjectTypes": textBlock.studyObjectTypes,
                 })
@@ -622,6 +625,7 @@ def studyView(request, pk):
                 studyObjects.append({
                     "id": vibrationPattern.objectId,
                     "name": vibrationPattern.name,
+                    "displayName": vibrationPattern.displayName,
                     "vibrationPatternElements": vibrationPatternElements,
                     "studyObjectTypes": vibrationPattern.studyObjectTypes,
                 })
@@ -632,6 +636,7 @@ def studyView(request, pk):
                 studyObjects.append({
                     "id": dateQuestion.objectId,
                     "name": dateQuestion.name,
+                    "displayName": dateQuestion.displayName,
                     "questionText": dateQuestion.questionText,
                     "displayName": dateQuestion.displayName,
                     "studyObjectTypes": dateQuestion.studyObjectTypes,
@@ -644,6 +649,7 @@ def studyView(request, pk):
                 studyObjects.append({
                     "id": linearScaleQuestion.objectId,
                     "name": linearScaleQuestion.name,
+                    "displayName": linearScaleQuestion.displayName,
                     "questionText": linearScaleQuestion.questionText,
                     "numberOfChoices": linearScaleQuestion.numberOfChoices,
                     "displayName": linearScaleQuestion.displayName,
@@ -665,6 +671,7 @@ def studyView(request, pk):
                 studyObjects.append({
                     "id": multipleChoiceQuestion.objectId,
                     "name": multipleChoiceQuestion.name,
+                    "displayName": multipleChoiceQuestion.displayName,
                     "questionText": multipleChoiceQuestion.questionText,
                     "displayName": multipleChoiceQuestion.displayName,
                     "answerOptions": answerOptions,
@@ -679,6 +686,7 @@ def studyView(request, pk):
                 studyObjects.append({
                     "id": textQuestion.objectId,
                     "name": textQuestion.name,
+                    "displayName": textQuestion.displayName,
                     "questionText": textQuestion.questionText,
                     "displayName": textQuestion.displayName,
                     "studyObjectTypes": textQuestion.studyObjectTypes,

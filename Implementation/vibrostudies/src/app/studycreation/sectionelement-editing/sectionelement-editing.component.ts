@@ -67,7 +67,7 @@ export class SectionElementEditingComponent implements OnInit {
      * Ein neues SectionElement wird erzeugt und in die Listen eingebunden
      */
     onAddPlayground() {
-        let toInsert = new SectionElement(this.studywrapper.lastID, "", 1);
+        let toInsert = new SectionElement(this.studywrapper.lastID, "", "", 1);
         this.sectionelements.unshift(toInsert);
         this.studywrapper.study.sectionElements.unshift(toInsert);
     }

@@ -12,7 +12,10 @@
             <mat-card>
                 <mat-card-title>
                     <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
-                        <input matInput placeholder="Bezeichnung" [(ngModel)]="sectionelement.name" /> </mat-form-field>
+                        <input matInput placeholder="Interne Bezeichnung" [(ngModel)]="sectionelement.name" /> </mat-form-field>
+                    &nbsp;&nbsp;
+                    <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
+                        <input matInput placeholder="Anzeigename" [(ngModel)]="sectionelement.displayName" /> </mat-form-field>
                     &nbsp;&nbsp;
                     <mat-form-field style="width: 20%; font-size:18px">
                         <mat-label>Randomisierung</mat-label>

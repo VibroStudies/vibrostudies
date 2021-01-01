@@ -4,14 +4,6 @@ import { AbstractStudyObject } from "../AbstractStudyObject";
  * Ein AbstractQuestion stellt ein allgemeines Fragenobjekt dar.
  */
 export abstract class AbstractQuestion extends AbstractStudyObject {
-  private _displayName: string = "";
-  get displayName(): string {
-    return this._displayName;
-  }
-  set displayName(displayName: string) {
-    this._displayName = displayName;
-  }
-
   private _questionText: string = "";
   get questionText(): string {
     return this._questionText;
@@ -39,7 +31,7 @@ export abstract class AbstractQuestion extends AbstractStudyObject {
    * @param id ist die eindeutige Identifikationsnummer des Fragenobjekts
    */
   constructor(id: number, name: string, questionText: string, displayName: string) {
-    super(id, name);
+    super(id, name, displayName);
     this.questionText = questionText;
     this._answer = undefined;
     this.displayName = displayName;

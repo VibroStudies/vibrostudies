@@ -65,6 +65,7 @@ export class TextBlockEditingComponent implements OnInit {
         let toInsert = new TextBlock(
             this.studywrapper.lastID,
             "",
+            "",
             ""
         );
         this.addFormControl(toInsert);

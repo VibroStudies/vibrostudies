@@ -29,17 +29,26 @@ export abstract class AbstractStudyObject {
     this._name = name;
   }
 
+  private _displayName: string;
+  get displayName(): string {
+    return this._displayName;
+  }
+  set displayName(displayName: string) {
+    this._displayName = displayName;
+  }
+
 
   /**
    * @param id ist die eindeutige Identifikationsnummer des Studienobjekts
    * @param fixed entscheidet, ob das Studienobjekt innerhalb eines Section-Elements eine feste Position hat oder die
    * Position von Studieninstanz zu Studieninstanz mit Hilfe von Randomisierung variiert
    */
-  constructor(id: number, name: string) {
+  constructor(id: number, name: string, displayName: string) {
     if (id == null) {
       throw new Error("Id darf nicht null sein.");
     }
     this._id = id;
     this._name = name;
+    this._displayName = displayName;
   }
 }

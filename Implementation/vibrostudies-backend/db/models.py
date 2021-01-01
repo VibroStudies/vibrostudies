@@ -47,6 +47,7 @@ class AbstractStudyObject(models.Model):
     studyId = models.ForeignKey(Study, on_delete=models.CASCADE)
     objectId = models.IntegerField()
     name = models.TextField(null=True)
+    displayName = models.TextField(null=True)
     studyObjectTypes = models.IntegerField(choices=StudyObjectTypes.choices())
 
     class Meta:
@@ -58,7 +59,6 @@ class AbstractStudyObject(models.Model):
 
 class AbstractQuestion(AbstractStudyObject):
     questionText = models.TextField()
-    displayName = models.TextField()
     class Meta:
         abstract = True
 

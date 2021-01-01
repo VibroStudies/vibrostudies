@@ -317,7 +317,8 @@ export class StudyParticipationComponent implements OnInit, AfterViewInit {
                     for (let findSectionElement of this.studywrapper.study.sectionElements) {
                         if (section.sectionElements[this.currentSectionElement].ID == findSectionElement.id) {
                             sectionElement = findSectionElement;
-                            this.currentTitle = sectionElement.name;
+                            this.currentTitle = sectionElement.displayName;
+                            console.log(sectionElement);
                             if (section.resultRelevant) {
                                 this.saveAnswers = findSectionElement.resultRelevant;
                             } else {

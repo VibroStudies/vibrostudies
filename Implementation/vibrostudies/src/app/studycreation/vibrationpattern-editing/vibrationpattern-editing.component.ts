@@ -114,7 +114,7 @@ export class VibrationPatternEditingComponent implements OnInit {
      */
     onAddVibrationPattern() {
         let toInsert = new VibrationPattern(
-            this.studywrapper.lastID, ""
+            this.studywrapper.lastID, "", ""
         );
         this.vibrationpatterns.unshift(toInsert);
         this.studywrapper.study.studyObjects.unshift(toInsert);

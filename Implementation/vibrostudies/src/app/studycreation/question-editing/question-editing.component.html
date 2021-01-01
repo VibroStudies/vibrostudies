@@ -6,7 +6,10 @@
         <mat-card-title>
             <h3>{{this.getStudyObjectTypeName(question)}}</h3>
             <mat-form-field class="example-full-width" style="width: 50%;font-size:18px">
-                <input matInput placeholder="Bezeichnung" [(ngModel)]="question.name" />
+                <input matInput placeholder="Interne Bezeichnung" [(ngModel)]="question.name" />
+            </mat-form-field>&nbsp;&nbsp;
+            <mat-form-field class="example-full-width" style="width: 50%;font-size:18px">
+                <input matInput placeholder="Anzeigename" [(ngModel)]="question.displayName" />
             </mat-form-field>&nbsp;&nbsp;
             <button mat-icon-button class="redButton" (click)="removeFromStudy(index, question.id)">
                 <mat-icon class="trashCan">delete</mat-icon>

@@ -75,7 +75,7 @@ export class StudyPrototypeDAO {
                 for (let ref of section.sectionElements) {
                     refArray.push(new ReferenceTuple(ref.ID, ref.isFixed));
                 }
-                let toInsert = new Section(section.id, section.name, section.skippable, section.resultRelevant, section.randomStrategy);
+                let toInsert = new Section(section.id, section.name, section.displayName, section.skippable, section.resultRelevant, section.randomStrategy);
                 toInsert.sectionElements = refArray;
                 sections.push(toInsert);
             }
@@ -87,7 +87,7 @@ export class StudyPrototypeDAO {
                 for (let ref of sectionElement.studyObjects) {
                     refArray.push(new ReferenceTuple(ref.ID, ref.isFixed));
                 }
-                sectionElements.push(new SectionElement(sectionElement.id, sectionElement.name, sectionElement.randomStrategy, refArray));
+                sectionElements.push(new SectionElement(sectionElement.id, sectionElement.name, sectionElement.displayName, sectionElement.randomStrategy, refArray));
             }
             study.sectionElements = sectionElements;
 
@@ -95,7 +95,7 @@ export class StudyPrototypeDAO {
             for (let studyObject of (studyResult as any).studyObjects) {
                 switch (studyObject.studyObjectTypes) {
                     case 3: // TEXTBLOCK
-                        studyObjects.push(new TextBlock(studyObject.id, studyObject.name, studyObject.text));
+                        studyObjects.push(new TextBlock(studyObject.id, studyObject.name, studyObject.displayName, studyObject.text));
                         break;
                     case 4: // QUESTION
                         switch (studyObject.questionType) {
@@ -129,7 +129,7 @@ export class StudyPrototypeDAO {
                                     (vibElement as VibrationElement).amplitude));
                             }
                         }
-                        let vibElement = new VibrationPattern(studyObject.id, studyObject.name);
+                        let vibElement = new VibrationPattern(studyObject.id, studyObject.name, studyObject.displayName);
                         vibElement.vibrationPatternElements = vibrationElements;
                         studyObjects.push(vibElement);
                         break;

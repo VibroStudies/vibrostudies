@@ -12,7 +12,11 @@
             <mat-card>
                 <mat-card-title>
                     <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
-                        <input matInput placeholder="Bezeichnung" [(ngModel)]="vibrationpattern.name" />
+                        <input matInput placeholder="Interne Bezeichnung" [(ngModel)]="vibrationpattern.name" />
+                    </mat-form-field>
+                    &nbsp;&nbsp;
+                    <mat-form-field class="example-full-width" style="width: 50%; font-size:18px">
+                        <input matInput placeholder="Anzeigename" [(ngModel)]="vibrationpattern.displayName" />
                     </mat-form-field>
                     <button mat-icon-button class="redButton" (click)="removeFromStudy(index, vibrationpattern.id)">
                         <mat-icon class="trashCan">delete</mat-icon>
@@ -42,7 +46,8 @@
                                 </mat-form-field><button mat-icon-button class="redButton"
                                     (click)="removeFromVibrationPattern(index, elIndex)">
                                     <mat-icon class="trashCan">delete</mat-icon>
-                                </button></mat-card>
+                                </button>
+                            </mat-card>
                         </ng-template>
                         <ng-template #showPause>
                             <mat-card class="pause-card" cdkDrag>{{elIndex+1}}. Pause&nbsp;&nbsp;<mat-form-field>

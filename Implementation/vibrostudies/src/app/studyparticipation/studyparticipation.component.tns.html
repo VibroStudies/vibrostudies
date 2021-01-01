@@ -26,7 +26,7 @@
 
     <ng-template tkTemplateKey="VibrationPattern" let-item="item">
         <StackLayout class="container">
-            <Button [text]="item.object.name" class="vibrationButton" (tap)="vibrate(item.object)"></Button>
+            <Button [text]="item.object.displayName" class="vibrationButton" (tap)="vibrate(item.object)"></Button>
         </StackLayout>
     </ng-template>
 

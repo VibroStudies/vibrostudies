@@ -1,3 +1,3 @@
 export class AppSettings {
-    public static baseURL = "*"; // HIER * DURCH BACKEND SERVER URL ERSETZEN
+    public static baseURL = "https://bitschi.hopto.org"; // HIER * DURCH BACKEND SERVER URL ERSETZEN
 }

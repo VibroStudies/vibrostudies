@@ -87,8 +87,8 @@ export class Section extends AbstractStudyObject{
    * einfließen, z.B. ist eine Einführungs-Section mit einem Tutorial, um sich mit der Umgebung
    * vertraut zu machen, nicht von Bedeutung
    */
-  constructor(id: number, name: string, skippable: boolean, resultRelevant: boolean, randomStrategy: RandomizingStrategies) {
-    super(id, name);
+  constructor(id: number, name: string, displayName: string, skippable: boolean, resultRelevant: boolean, randomStrategy: RandomizingStrategies) {
+    super(id, name, displayName);
     this._skippable = skippable;
     this._resultRelevant = resultRelevant;
     this._randomStrategy = randomStrategy;

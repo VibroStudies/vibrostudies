@@ -67,7 +67,7 @@ export class SectionEditingComponent implements OnInit {
      * Eine neue default Section wird erstellt und der Studie und dem sections Array hinzugefügt.
      */
     onAddSection() {
-        let toInsert = new Section(this.studywrapper.lastID, "", false, true, 1);
+        let toInsert = new Section(this.studywrapper.lastID, "", "", false, true, 1);
         this.sections.unshift(toInsert);
         this.studywrapper.study.sections.unshift(toInsert);
     }

@@ -81,9 +81,9 @@ export class SectionElement extends AbstractStudyObject{
    * @param fixed entscheidet, ob das Section-Element eine feste Position in einer Section hat oder die
    * Position von Studieninstanz zu Studieninstanz mit Hilfe von Randomisierung variiert
    */
-  constructor(id: number, name: string, randomStrategy: RandomizingStrategies, studyObjects?: ReferenceTuple[],
+  constructor(id: number, name: string, displayName: string, randomStrategy: RandomizingStrategies, studyObjects?: ReferenceTuple[],
     verifier?: ReferenceTupleMembershipVerifier) {
-    super(id, name);
+    super(id, name, displayName);
     if (studyObjects == null) {
       this._studyObjects = [];
     } else {

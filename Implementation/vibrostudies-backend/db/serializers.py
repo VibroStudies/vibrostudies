@@ -24,12 +24,12 @@ class StudySerializer(serializers.HyperlinkedModelSerializer):
 class AbstractStudyObjectSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = AbstractStudyObject
-        fields = ('id', 'studyId', 'objectId', 'name', 'studyObjectTypes')
+        fields = ('id', 'studyId', 'objectId', 'name', 'displayName', 'studyObjectTypes')
 
 class QualificationQuestionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = QualificationQuestion
-        fields = ('id', 'studyId', 'objectId', 'name', 'studyObjectTypes', 'questionText', 'displayName', 'requiredAnswer')
+        fields = ('id', 'studyId', 'objectId', 'name', 'displayName', 'studyObjectTypes', 'questionText', 'requiredAnswer')
 
 class DateQuestionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -91,17 +91,17 @@ class TextAnswerSerializer(serializers.HyperlinkedModelSerializer):
 class TextBlockSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TextBlock
-        fields = ('id', 'studyId', 'objectId', 'name', 'text', "studyObjectTypes")
+        fields = ('id', 'studyId', 'objectId', 'name', 'displayName', 'text', "studyObjectTypes")
 
 class SectionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Section
-        fields = ('id', 'name', 'studyId', 'objectId', 'studyObjectTypes', 'resultRelevant', 'skippable', 'randomStrategy')
+        fields = ('id', 'name', 'displayName', 'studyId', 'objectId', 'studyObjectTypes', 'resultRelevant', 'skippable', 'randomStrategy')
 
 class SectionElementSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SectionElement
-        fields = ('id', 'name', 'studyId', 'objectId', 'studyObjectTypes', 'randomStrategy', 'skippable', "resultRelevant")
+        fields = ('id', 'name', 'displayName', 'studyId', 'objectId', 'studyObjectTypes', 'randomStrategy', 'skippable', "resultRelevant")
 
 class ReferenceTupleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -116,7 +116,7 @@ class VibrationPatternElementSerializer(serializers.HyperlinkedModelSerializer):
 class VibrationPatternSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = VibrationPattern
-        fields = ('id', 'name', 'studyId', 'objectId', 'studyObjectTypes', 'randomStrategy')             
+        fields = ('id', 'name', 'displayName', 'studyId', 'objectId', 'studyObjectTypes', 'randomStrategy')             
 
 
 class SectionToSectionElementRefSerializer(serializers.HyperlinkedModelSerializer):

@@ -24,8 +24,8 @@ export class TextBlock extends AbstractStudyObject {
    * @param fixed entscheidet, ob der TextBlock innerhalb eines Section-Elements eine feste Position hat oder die
    * Position von Studieninstanz zu Studieninstanz mit Hilfe von Randomisierung variiert
    */
-  constructor(id: number, name: string, text: string) {
-    super(id, name);
+  constructor(id: number, name: string, displayName: string, text: string) {
+    super(id, name, displayName);
     this.text = text;
   }
 }
